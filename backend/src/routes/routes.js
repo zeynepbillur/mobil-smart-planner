@@ -4,6 +4,7 @@ const { checkRole } = require("../middlewares/role.middleware");
 const AuthController = require("../controllers/auth.controller");
 const TaskController = require("../controllers/task.controller");
 const ProgramController = require("../controllers/program.controller");
+const AIController = require("../controllers/ai.controller");
 
 const router = express.Router();
 
@@ -27,5 +28,8 @@ router.post("/programs/approve-user", checkRole("admin"), ProgramController.appr
 // Program endpointleri (user/admin)
 router.get("/programs", ProgramController.getPrograms);
 router.get("/programs/:programId/tasks", ProgramController.getProgramTasks);
+
+router.post("/ai/chat", AIController.chat);
+
 
 module.exports = router;
